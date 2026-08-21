@@ -79,7 +79,6 @@ fn SiteFooter() -> impl IntoView {
     view! {
         <footer class="site-footer">
             <div class="container footer-inner">
-                <p>"BayWorks is a dba of Pacific Bay LLC."</p>
                 <p class="footer-fine">"© 2026 Pacific Bay LLC. All rights reserved."</p>
             </div>
         </footer>
