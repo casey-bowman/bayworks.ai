@@ -100,7 +100,7 @@ fn HomePage() -> impl IntoView {
                 </div>
                 <p class="lede">
                     "BayWorks builds systems software in Rust — open, peer-to-peer
-                    infrastructure for autonomous agents transacting in sovereign money."
+                    infrastructure."
                 </p>
                 <div class="hero-actions">
                     <A href="/projects" attr:class="btn btn-primary">"See our projects"</A>
