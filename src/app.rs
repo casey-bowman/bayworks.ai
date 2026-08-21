@@ -12,7 +12,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
             <head>
                 <meta charset="utf-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-                <meta name="description" content="BayWorks — software engineering at the nexus of Bitcoin and AI. A dba of Pacific Bay LLC."/>
+                <meta name="description" content="BayWorks — software engineering where Bitcoin meets distributed agents. A dba of Pacific Bay LLC."/>
                 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg"/>
                 <AutoReload options=options.clone() />
                 <HydrationScripts options/>
@@ -94,10 +94,13 @@ fn HomePage() -> impl IntoView {
         <Title text="BayWorks — Software Engineering"/>
         <section class="hero">
             <div class="container">
-                <h1>"Software engineering at the nexus of "<span class="accent-btc">"Bitcoin"</span>" and "<span class="accent-ai">"AI"</span></h1>
+                <div class="hero-lockup">
+                    <img src="/images/bayworks-logo.png" alt="BayWorks" class="hero-logo"/>
+                    <h1>"Software engineering where "<span class="accent-btc">"Bitcoin"</span>" meets "<span class="accent-ai">"distributed agents"</span></h1>
+                </div>
                 <p class="lede">
-                    "BayWorks builds systems software in Rust — with a focus on the emerging space where
-                    sovereign money meets autonomous agents."
+                    "BayWorks builds systems software in Rust — open, peer-to-peer
+                    infrastructure for autonomous agents transacting in sovereign money."
                 </p>
                 <div class="hero-actions">
                     <A href="/projects" attr:class="btn btn-primary">"See our projects"</A>
@@ -198,8 +201,8 @@ fn AboutPage() -> impl IntoView {
                 <p>
                     "BayWorks is the software engineering practice of Pacific Bay LLC. We build
                     systems software in Rust, with particular interest in peer-to-peer networking,
-                    actor systems, and the emerging intersection of Bitcoin and AI — where autonomous
-                    agents need open protocols, verifiable identity, and money native to the internet."
+                    actor systems, and the ground where Bitcoin meets distributed agents — agents
+                    need open protocols, verifiable identity, and money native to the internet."
                 </p>
                 <p>
                     "We develop in the open: our projects grow through public, testable architectural
