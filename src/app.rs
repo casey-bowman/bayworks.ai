@@ -94,7 +94,7 @@ fn HomePage() -> impl IntoView {
             <div class="container">
                 <div class="hero-lockup">
                     <img src="/images/bayworks-logo.png" alt="BayWorks" class="hero-logo"/>
-                    <h1>"Software engineering where "<span class="accent-btc">"Bitcoin"</span>" meets "<span class="accent-ai">"distributed agents"</span></h1>
+                    <h1>"Where "<span class="accent-btc">"Bitcoin"</span>" meets "<span class="accent-ai">"distributed agents"</span></h1>
                 </div>
                 <p class="lede">
                     "BayWorks builds open, peer-to-peer infrastructure in Rust"
