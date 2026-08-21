@@ -99,8 +99,7 @@ fn HomePage() -> impl IntoView {
                     <h1>"Software engineering where "<span class="accent-btc">"Bitcoin"</span>" meets "<span class="accent-ai">"distributed agents"</span></h1>
                 </div>
                 <p class="lede">
-                    "BayWorks builds systems software in Rust — open, peer-to-peer
-                    infrastructure"
+                    "BayWorks builds open, peer-to-peer infrastructure in Rust"
                 </p>
                 <div class="hero-actions">
                     <A href="/projects" attr:class="btn btn-primary">"See our projects"</A>
