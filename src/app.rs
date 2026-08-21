@@ -54,9 +54,6 @@ fn SiteHeader() -> impl IntoView {
     view! {
         <header class="site-header">
             <div class="container header-inner">
-                <A href="/" attr:class="brand">
-                    <img src="/images/bayworks-logo.png" alt="BayWorks" class="brand-logo"/>
-                </A>
                 <button
                     class="menu-toggle"
                     aria-label="Toggle navigation"
