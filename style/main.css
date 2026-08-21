@@ -69,10 +69,19 @@ a {
 .header-inner {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
     position: relative;
+}
+
+.brand-word {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: 0.01em;
 }
 
 .site-nav {
