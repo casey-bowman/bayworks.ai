@@ -1,0 +1,319 @@
+/* BayWorks — main stylesheet
+   Palette drawn from the BayWorks logo (navy / steel blue wave)
+   with the kamiroh purple→teal gradient as a project accent. */
+
+:root {
+    --navy: #143a52;
+    --navy-deep: #0d2939;
+    --steel: #4a7fa5;
+    --steel-light: #7ba7c7;
+    --mist: #eef3f7;
+    --ink: #1c2b36;
+    --paper: #ffffff;
+    --muted: #5b6b77;
+    --kamiroh-purple: #4738a8;
+    --kamiroh-teal: #3aa88a;
+    --radius: 12px;
+    --shadow: 0 2px 12px rgba(13, 41, 57, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+h1, h2, h3 {
+    color: var(--navy);
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+a {
+    color: var(--steel);
+}
+
+/* Header */
+
+.site-header {
+    background: var(--paper);
+    border-bottom: 1px solid var(--mist);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+}
+
+.brand-logo {
+    height: 46px;
+    display: block;
+}
+
+.site-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.site-nav a {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover {
+    border-bottom-color: var(--steel-light);
+}
+
+.site-nav a[aria-current="page"] {
+    border-bottom-color: var(--steel);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--navy);
+    margin: 5px 0;
+    border-radius: 2px;
+}
+
+/* Hero */
+
+.hero {
+    background:
+        radial-gradient(1200px 400px at 70% -50%, rgba(74, 127, 165, 0.18), transparent),
+        linear-gradient(180deg, var(--mist), var(--paper));
+    padding: 5rem 0 4rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+    margin: 0 0 1rem;
+}
+
+.accent-btc {
+    color: #b8860b;
+}
+
+.accent-ai {
+    background: linear-gradient(120deg, var(--kamiroh-purple), var(--kamiroh-teal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.lede {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 42rem;
+    margin: 0 auto 1.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
+
+.btn {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 2px solid var(--navy);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.btn-primary {
+    background: var(--navy);
+    color: #fff;
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--navy);
+}
+
+.btn-small {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Sections & cards */
+
+.section {
+    padding: 2.5rem 0;
+}
+
+.page-head {
+    background: linear-gradient(180deg, var(--mist), var(--paper));
+    padding-top: 3.5rem;
+}
+
+.page-head h1 {
+    margin: 0 0 0.5rem;
+}
+
+.section-title {
+    margin-top: 0;
+}
+
+.card {
+    background: var(--paper);
+    border: 1px solid var(--mist);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-card.kamiroh {
+    border-top: 4px solid;
+    border-image: linear-gradient(90deg, var(--kamiroh-purple), var(--kamiroh-teal)) 1;
+}
+
+.project-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.project-logo {
+    height: 44px;
+}
+
+.badge {
+    background: linear-gradient(120deg, var(--kamiroh-purple), var(--kamiroh-teal));
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.placeholder-card {
+    border-style: dashed;
+    box-shadow: none;
+    color: var(--muted);
+    text-align: center;
+}
+
+.placeholder-card h3 {
+    color: var(--muted);
+}
+
+.contact-card {
+    text-align: center;
+    padding: 2.5rem;
+}
+
+.prose p {
+    max-width: 46rem;
+}
+
+/* Footer */
+
+.site-footer {
+    background: var(--navy-deep);
+    color: var(--steel-light);
+    margin-top: 3rem;
+    padding: 1.75rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.site-footer p {
+    margin: 0.25rem 0;
+}
+
+.footer-fine {
+    opacity: 0.7;
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .site-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--paper);
+        border-bottom: 1px solid var(--mist);
+        flex-direction: column;
+        padding: 1rem 1.25rem;
+        gap: 0.75rem;
+        box-shadow: var(--shadow);
+    }
+
+    .site-nav.open {
+        display: flex;
+    }
+}
