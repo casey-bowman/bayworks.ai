@@ -1,0 +1,22 @@
+[package]
+name = "wasm_split_macros"
+version = "0.2.2"
+authors.workspace = true
+categories.workspace = true
+edition.workspace = true
+description.workspace = true
+license.workspace = true
+repository.workspace = true
+readme = "README.md"
+# because we emit unsafe extern blocks/safe extern items
+rust-version = "1.84"
+
+[dependencies]
+base16 = "0.2.1"
+sha2 = "0.10.8"
+# for proc macro support
+quote = "1.0.36"
+syn = { version = "2.0.108", features = ["full"] }
+
+[lib]
+proc-macro = true

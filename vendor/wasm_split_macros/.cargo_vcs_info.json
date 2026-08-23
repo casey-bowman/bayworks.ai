@@ -1,0 +1,6 @@
+{
+  "git": {
+    "sha1": "a3266fe9d998b3f8b0d2111500b7c4b8ec892506"
+  },
+  "path_in_vcs": "crates/wasm_split_macros"
+}
