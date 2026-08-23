@@ -114,7 +114,7 @@ fn HomePage() -> impl IntoView {
                 <div class="card project-card kamiroh">
                     <div class="project-card-head">
                         <img src="/images/kamiroh-logo.png" alt="kamiroh" class="project-logo"/>
-                        <span class="badge">"Active spike"</span>
+                        <span class="badge">"Spike 2 graduated"</span>
                     </div>
                     <p>
                         "Peer actors, addressable by name and endpoint, that message each other — locally
@@ -146,7 +146,7 @@ fn ProjectsPage() -> impl IntoView {
                 <article class="card project-card kamiroh">
                     <div class="project-card-head">
                         <img src="/images/kamiroh-logo.png" alt="kamiroh" class="project-logo"/>
-                        <span class="badge">"Spike 2 in progress"</span>
+                        <span class="badge">"Spike 2 graduated"</span>
                     </div>
                     <p>
                         "kamiroh enables peer-to-peer, actor-based communication across the internet —
@@ -167,16 +167,22 @@ fn ProjectsPage() -> impl IntoView {
                     </p>
                     <h3>"Developed through workshop spikes"</h3>
                     <p>
-                        "kamiroh is evolving through a series of architectural spikes. The current
-                        iteration, spike 2, makes timeouts and disconnects first-class: every
-                        conversation surface takes finite, mandatory deadlines, a hung exchange fails
-                        loudly on both sides' own clocks, and transports report peer death as concrete
-                        evidence that immediately fails active exchanges while preserving the
-                        underlying conversation."
+                        "kamiroh evolves through a series of architectural spikes. Spike 2 made
+                        timeouts and disconnects first-class — every conversation surface takes
+                        finite, mandatory deadlines, a hung exchange fails loudly on both sides'
+                        own clocks, and transports report peer death as concrete evidence — and
+                        graduated to the integration tier in August 2026, with a suite of 85
+                        ordinary tests and a 25-scenario executable specification. The next spike
+                        puts AI agents on top of those actors as operators."
+                    </p>
+                    <p>
+                        "We wrote about how this team builds: "
+                        <A href="/blog/the-textbook-team">"The textbook team, finally affordable"</A>"."
                     </p>
                     <div class="card-actions">
                         <a href="https://kamiroh.com" target="_blank" rel="noopener" class="btn btn-small">"kamiroh.com"</a>
-                        <a href="https://github.com/kamiroh-workshop-2/kamiroh" target="_blank" rel="noopener" class="btn btn-small btn-ghost">"Spike 2 workshop repo"</a>
+                        <a href="https://github.com/kamiroh-staging/kamiroh" target="_blank" rel="noopener" class="btn btn-small btn-ghost">"Integration tier"</a>
+                        <a href="https://github.com/kamiroh-workshop-2/kamiroh" target="_blank" rel="noopener" class="btn btn-small btn-ghost">"Spike 2 workshop (archival)"</a>
                     </div>
                 </article>
 
