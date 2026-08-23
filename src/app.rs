@@ -38,6 +38,8 @@ pub fn App() -> impl IntoView {
                 <Routes fallback=|| NotFound().into_view()>
                     <Route path=StaticSegment("") view=HomePage/>
                     <Route path=StaticSegment("projects") view=ProjectsPage/>
+                    <Route path=StaticSegment("blog") view=BlogPage/>
+                    <Route path=(StaticSegment("blog"), StaticSegment("the-textbook-team")) view=PostTextbookTeam/>
                     <Route path=StaticSegment("about") view=AboutPage/>
                     <Route path=StaticSegment("contact") view=ContactPage/>
                 </Routes>
@@ -66,6 +68,7 @@ fn SiteHeader() -> impl IntoView {
                 <nav class="site-nav" class:open=move || menu_open.get() on:click=move |_| set_menu_open.set(false)>
                     <A href="/">"Home"</A>
                     <A href="/projects">"Projects"</A>
+                    <A href="/blog">"Blog"</A>
                     <A href="/about">"About"</A>
                     <A href="/contact">"Contact"</A>
                 </nav>
@@ -181,6 +184,52 @@ fn ProjectsPage() -> impl IntoView {
                     <h3>"More to come"</h3>
                     <p>"Further projects exploring the Bitcoin × AI nexus will appear here."</p>
                 </div>
+            </div>
+        </section>
+    }
+}
+
+const TEXTBOOK_TEAM_HTML: &str = include_str!("posts/textbook_team.html");
+
+#[component]
+fn BlogPage() -> impl IntoView {
+    view! {
+        <Title text="Blog — BayWorks"/>
+        <section class="section page-head">
+            <div class="container">
+                <h1>"Blog"</h1>
+                <p class="lede">"Notes from how BayWorks builds."</p>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <article class="card post-index-card">
+                    <p class="post-date">"August 23, 2026"</p>
+                    <h2 class="post-index-title">
+                        <A href="/blog/the-textbook-team">"The textbook team, finally affordable"</A>
+                    </h2>
+                    <div class="card-actions">
+                        <A href="/blog/the-textbook-team" attr:class="btn btn-small">"Read the post"</A>
+                    </div>
+                </article>
+            </div>
+        </section>
+    }
+}
+
+#[component]
+fn PostTextbookTeam() -> impl IntoView {
+    view! {
+        <Title text="The textbook team, finally affordable — BayWorks"/>
+        <section class="section page-head">
+            <div class="container post-head">
+                <h1>"The textbook team, finally affordable"</h1>
+                <p class="post-date">"August 23, 2026"</p>
+            </div>
+        </section>
+        <section class="section">
+            <div class="container">
+                <article class="post-body" inner_html=TEXTBOOK_TEAM_HTML></article>
             </div>
         </section>
     }
