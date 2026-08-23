@@ -116,7 +116,7 @@ fn HomePage() -> impl IntoView {
                     <p>
                         "Peer actors, addressable by name and endpoint, that message each other — locally
                         or across the network — to drive agents. Built on Kameo actors and Iroh's QUIC
-                        networking, with no central server required."
+                        networking — peers talk directly, with no application server in the middle."
                     </p>
                     <div class="card-actions">
                         <a href="https://kamiroh.com" target="_blank" rel="noopener" class="btn btn-small">"kamiroh.com"</a>
@@ -147,7 +147,7 @@ fn ProjectsPage() -> impl IntoView {
                     </div>
                     <p>
                         "kamiroh enables peer-to-peer, actor-based communication across the internet —
-                        without a central server. Named actors live at Iroh endpoints and hold
+                        no application server in between. Named actors live at Iroh endpoints and hold
                         turn-taking conversations over QUIC, with deny-by-default, allowlist-based
                         security and cryptographic endpoint verification."
                     </p>
@@ -156,8 +156,11 @@ fn ProjectsPage() -> impl IntoView {
                         "A workspace-based modular monolith in Rust, using a ports-and-adapters
                         architecture that separates core domain logic from the network. Three
                         interchangeable transports — in-memory, the Kameo actor runtime, and an Iroh
-                        QUIC adapter — with hermetic and N0 network profiles, including NAT traversal
-                        with hole-punched direct paths using only endpoint IDs."
+                        QUIC adapter — with two network profiles: hermetic (explicit peer addresses,
+                        no third-party infrastructure at all) and N0 (dialing by endpoint ID alone,
+                        with n0's public discovery and relay infrastructure handling the introduction
+                        and NAT traversal — hole-punching a direct path where possible, with relay
+                        fallback)."
                     </p>
                     <h3>"Developed through workshop spikes"</h3>
                     <p>
