@@ -75,7 +75,10 @@ session designs, writes, and verifies; local Claude Code sessions handle
 everything that needs push access or open egress (pushes, dependency bumps,
 refreshing the artifact shelf); the human merges and pushes. The cloud
 session works only under `cowork/*` branches — `master` advances by
-deliberate merges.
+deliberate merges. Commit messages follow
+[Conventional Commits](https://www.conventionalcommits.org/) (`feat:`,
+`fix:`, `chore:`, `docs:`, `build:`, …), adopted 2026-08-23; earlier
+commits predate the convention and stay as they are.
 
 The cloud sandbox cannot reach crates.io or static.rust-lang.org, so
 hermetic builds use a `vendor-snapshot` orphan branch (an artifact shelf
