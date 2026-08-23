@@ -21,6 +21,15 @@ if [ "$branch" = "vendor-snapshot" ]; then
     exit 1
 fi
 
+# Never strand the repo on the orphan branch: on any failure, force-return
+# to the working branch. -f is safe throughout: this script never modifies
+# source files, so anything checkout would overwrite is byte-identical to
+# the branch's committed content.
+restore_branch() {
+    git checkout -qf "${branch}" 2>/dev/null || true
+}
+trap restore_branch ERR
+
 echo "==> vendoring crates for Cargo.lock @ ${src_sha} (branch ${branch})"
 cargo vendor vendor
 
@@ -53,7 +62,13 @@ git commit -m "vendor snapshot for Cargo.lock @ ${src_sha}"
 echo "==> force-pushing vendor-snapshot"
 git push -f origin vendor-snapshot
 
-git checkout "${branch}"
+# -f is required, not cosmetic: the orphan commit made every source file
+# untracked (git rm --cached), and a plain checkout refuses to overwrite
+# untracked files. They are byte-identical to the branch's content.
+trap - ERR
+git checkout -f "${branch}"
 echo "==> done; back on ${branch}"
-echo "    (vendor/, .cargo/, shelf/ remain in the working tree as untracked,"
-echo "     gitignored files — harmless, or delete them if you prefer)"
+echo "    (vendor/, .cargo/, and shelf/ were tracked on vendor-snapshot, so"
+echo "     switching back removed them from the working tree. That's fine:"
+echo "     local builds use crates.io, and the cloud session restores them"
+echo "     from the pushed shelf via scripts/lay-down-snapshot.sh)"
