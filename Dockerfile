@@ -19,12 +19,15 @@ FROM chef AS builder
 COPY --from=planner /app/recipe.json recipe.json
 
 # Cook both halves the way cargo-leptos will build them, so the dependency
-# artifacts are already in target/ when the real build runs:
-#   server: --features ssr, release profile, host target
-#   client: --features hydrate, wasm-release profile, wasm32 target
+# artifacts are already in place when the real build runs:
+#   server: --features ssr, release profile, host target, default target dir
+#   client: --features hydrate, wasm-release profile, wasm32 target — and
+#     cargo-leptos builds the client with --target-dir=target/front, so the
+#     cook must land there too or the cache is never hit
 RUN cargo chef cook --release --no-default-features --features ssr \
         --recipe-path recipe.json
-RUN cargo chef cook --profile wasm-release --no-default-features --features hydrate \
+RUN CARGO_TARGET_DIR=/app/target/front \
+    cargo chef cook --profile wasm-release --no-default-features --features hydrate \
         --target wasm32-unknown-unknown --recipe-path recipe.json
 
 COPY . .
