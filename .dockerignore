@@ -3,3 +3,7 @@ target/
 *.md
 .dockerignore
 fly.toml
+vendor/
+.cargo/
+shelf/
+*.bundle

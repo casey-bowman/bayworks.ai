@@ -1,17 +1,33 @@
-# ---- Build stage -----------------------------------------------------------
-FROM rust:1-bookworm AS builder
+# ---- Chef base: toolchain + build tools (cached until rust image changes) --
+FROM rust:1-bookworm AS chef
 
-# wasm target for the client bundle
+RUN cargo install cargo-chef --locked
 RUN rustup target add wasm32-unknown-unknown
-
-# cargo-leptos (prebuilt binary installer; falls back to cargo install if needed)
 RUN curl --proto '=https' --tlsv1.2 -LsSf \
         https://github.com/leptos-rs/cargo-leptos/releases/latest/download/cargo-leptos-installer.sh | sh \
     || cargo install cargo-leptos --locked
-
 WORKDIR /app
-COPY . .
 
+# ---- Planner: distill the dependency recipe from the manifests ------------
+FROM chef AS planner
+COPY . .
+RUN cargo chef prepare --recipe-path recipe.json
+
+# ---- Builder: cook dependencies (cached until Cargo.toml/lock change), ----
+# ---- then build the real crate ------------------------------------------
+FROM chef AS builder
+COPY --from=planner /app/recipe.json recipe.json
+
+# Cook both halves the way cargo-leptos will build them, so the dependency
+# artifacts are already in target/ when the real build runs:
+#   server: --features ssr, release profile, host target
+#   client: --features hydrate, wasm-release profile, wasm32 target
+RUN cargo chef cook --release --no-default-features --features ssr \
+        --recipe-path recipe.json
+RUN cargo chef cook --profile wasm-release --no-default-features --features hydrate \
+        --target wasm32-unknown-unknown --recipe-path recipe.json
+
+COPY . .
 RUN cargo leptos build --release -vv
 
 # ---- Runtime stage ---------------------------------------------------------
